@@ -1,22 +1,33 @@
 import React, { Component } from 'react';
 import HornedBeasts from './HornedBeasts';
-import beastsData from './data.json';
+import {Row} from 'react-bootstrap'
 
 
 class Main extends Component {
     render() {
         return (
-            <div>
+            <Row>
                 {
-                    beastsData.map((beast, ind) => {
-                        return <HornedBeasts clicks={0} title={beast.title} image_url={beast.image_url} description={beast.description} />
+                    this.props.data.map(item=>{
+                        return(
+                            <HornedBeasts 
+                             title = {item.title}
+                             image_url={item.image_url}
+                             description= {item.description}
+                             showModal= {this.props.selectedModel}
+                             />
+                        )
                     })
                 }
 
 
 
-            </div>
+            </Row>
         )
     }
 }
 export default Main
+
+
+// beastsData.map((beast, ind) => {
+//     return <HornedBeasts clicks={0} title={beast.title} image_url={beast.image_url} description={beast.description} />
