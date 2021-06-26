@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Card } from 'react-bootstrap';
 
 
 class HornedBeasts extends Component {
@@ -18,14 +18,21 @@ class HornedBeasts extends Component {
 
     render() {
         return (
-            <div>
-                <h2>{this.props.title}</h2>
-                <img onClick={this.changeClicks} src={this.props.image_url} alt={this.props.title}></img>
-                <p>{this.props.description}</p>
-                <img src="https://cdn0.iconfinder.com/data/icons/communication-183/80/like-512.png" width="50px" height="50px" ></img>
-                <span>{this.state.clicks}</span>
 
-            </div>
+            <Card onClick={this.changeClicks} style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={this.props.image_url} />
+                <Card.Body>
+                    <Card.Title >{this.props.title}</Card.Title>
+                    <Card.Text>
+                        {this.props.description}
+                    </Card.Text>
+
+                    <img src="https://cdn0.iconfinder.com/data/icons/communication-183/80/like-512.png" width="50px" height="50px"></img>
+                    <span>{this.state.clicks}</span>
+
+                </Card.Body>
+            </Card>
+
         )
     }
 }
