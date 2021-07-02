@@ -11,13 +11,21 @@ class HornedBeasts extends Component {
         super(props);
         this.state = {
             numberCliks: 0,
+            numberSelect:0,
 
         }
+    }
+    onSelcted =(e)=>{
+        this.setState({
+
+        numberSelect:e.target.value
+    })
     }
     changeClicks = () => {
         this.setState({
             numberCliks: this.state.numberCliks + 1,
         })
+        console.log(this.state.numberCliks)
     }
     buttonToClik = () => {
         let data = {
@@ -36,13 +44,19 @@ class HornedBeasts extends Component {
                 <Card style={{ width: '50%', height: '50%' }}>
                     <Card.Img onClick={this.changeClicks} variant="" src={this.props.image_url} alt={this.props.title} />
                     <Card.Body>
+
                         <Card.Title >{this.props.title}</Card.Title>
                         <Card.Text>
                             {this.props.description}
+
+                           
+                            <Button variant="danger" onClick={this.buttonToClik}>open</Button>
+
+                            <img src="https://cdn0.iconfinder.com/data/icons/communication-183/80/like-512.png" width="50px" height="50px"></img>
+                            <span>{(this.state.numberCliks)}</span>
+
                         </Card.Text>
-                        <Button variant="danger" onClick={this.buttonToClik}>open</Button>
-                        <img src="https://cdn0.iconfinder.com/data/icons/communication-183/80/like-512.png" width="50px" height="50px"></img>
-                        <span>{(this.state.numberCliks)}</span>
+
 
                     </Card.Body>
                 </Card>
